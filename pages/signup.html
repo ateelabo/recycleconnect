@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16a34a">
+  <title>Create Account | RecycleConnect</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 text-slate-800">
+
+  <main class="flex min-h-screen items-center justify-center px-5 py-10">
+
+    <section class="w-full max-w-md rounded-3xl bg-white p-7 shadow-xl sm:p-9">
+        <!-- Back Button - Top Left -->
+<div class="mb-5 flex justify-start">
+  <button
+    type="button"
+    onclick="history.back()"
+    class="inline-flex items-center gap-2 text-sm font-semibold text-green-700 transition hover:text-green-900"
+  >
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M19 12H5m7-7-7 7 7 7"/>
+    </svg>
+    Back
+  </button>
+</div>
+
+      <!-- Branding -->
+      <div class="mb-7 text-center">
+
+        <div class="mx-auto mb-3 flex h-16 w-16 items-center justify-center ">
+          <span class="text-4xl">♻️</span>
+        </div>
+
+        <h1 class="text-2xl font-extrabold text-green-700">
+          Recycle Connect
+        </h1>
+
+        <h2 class="mt-5 text-xl font-bold">
+          Create Your Account
+        </h2>
+
+        <p class="mt-2 text-sm text-slate-500">
+          Join RecycleConnect and start recycling
+for rewards today!
+        </p>
+
+        <p id="role-label" class="mt-3 text-xs font-semibold text-green-700"></p>
+
+      </div>
+
+      <!-- Registration Form -->
+      <form id="signup-form" class="space-y-4">
+
+        <!-- Full Name -->
+        <div>
+                <label for="fullname" class="mb-2 flex items-center gap-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4"/>
+            <path stroke-linecap="round" d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+        </svg>
+        Full Name
+        </label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+            minlength="2"
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-100"
+          >
+        </div>
+
+        <!-- Email -->
+        <div>
+                <label for="email" class="mb-2 flex items-center gap-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/>
+        </svg>
+        Email Address
+        </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            autocomplete="email"
+            required
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-100"
+          >
+        </div>
+
+        <!-- Phone -->
+        <div>
+                <label for="phone" class="mb-2 flex items-center gap-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3h4l2 5-3 2a15 15 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/>
+        </svg>
+        Phone Number
+        </label> 
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            autocomplete="tel"
+            required
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-100"
+          >
+        </div>
+
+        <!-- Password -->
+        <div>
+                <label for="password" class="mb-2 flex items-center gap-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <rect x="4" y="10" width="16" height="11" rx="2"/>
+            <path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/>
+        </svg>
+        Password
+        </label>
+
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 pr-12 text-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-100"
+            >
+
+            <button
+              type="button"
+              class="password-toggle absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-green-700"
+              data-target="password"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg class="eye-open h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+
+              <svg class="eye-closed hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6 0 9.5 7 9.5 7a16 16 0 0 1-3.2 4.1M6.2 6.2C3.8 7.8 2.5 12 2.5 12s3.5 7 9.5 7c1.1 0 2.1-.2 3-.5"/>
+              </svg>
+            </button>
+          </div>
+
+          <p class="mt-1 text-xs text-slate-400">
+            Use at least 8 characters.
+          </p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+                <label for="confirm-password" class="mb-2 flex items-center gap-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
+            <circle cx="12" cy="12" r="9"/>
+        </svg>
+        Confirm Password
+        </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              autocomplete="new-password"
+              required
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 pr-12 text-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-100"
+            >
+
+            <button
+              type="button"
+              class="password-toggle absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-green-700"
+              data-target="confirm-password"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg class="eye-open h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+
+              <svg class="eye-closed hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6 0 9.5 7 9.5 7a16 16 0 0 1-3.2 4.1M6.2 6.2C3.8 7.8 2.5 12 2.5 12s3.5 7 9.5 7c1.1 0 2.1-.2 3-.5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="flex items-start gap-3 pt-2">
+          <input
+            type="checkbox"
+            id="terms"
+            required
+            class="mt-1 h-4 w-4 accent-green-600"
+          >
+
+          <label for="terms" class="text-xs leading-5 text-slate-500">
+            I agree to the
+            <a href="#" class="font-semibold text-green-700 hover:underline">Terms and Conditions</a>
+            and
+            <a href="#" class="font-semibold text-green-700 hover:underline">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="w-full rounded-xl bg-green-600 py-3.5 font-bold text-white shadow-md transition hover:bg-green-700 active:scale-95"
+        >
+          Create Account
+        </button>
+
+        <p id="signup-message" class="text-center text-xs text-slate-500" aria-live="polite"></p>
+
+      </form>
+
+      <!-- Login -->
+      <p class="mt-7 text-center text-sm text-slate-500">
+        Already have an account?
+        <a href="./login.html" id="login-link"
+          class="font-bold text-green-700 hover:underline">
+          Login
+        </a>
+      </p>
+
+    </section>
+
+  </main>
+
+  
+<script>
+  // Navigate to Login without a role parameter
+  document.getElementById("login-link").href = "./login.html";
+
+  // Password show / hide
+  document.querySelectorAll(".password-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const input = document.getElementById(button.dataset.target);
+      const eyeOpen = button.querySelector(".eye-open");
+      const eyeClosed = button.querySelector(".eye-closed");
+
+      const isHidden = input.type === "password";
+
+      input.type = isHidden ? "text" : "password";
+
+      eyeOpen.classList.toggle("hidden", !isHidden);
+      eyeClosed.classList.toggle("hidden", isHidden);
+
+      button.setAttribute(
+        "aria-label",
+        isHidden ? "Hide password" : "Show password"
+      );
+
+      button.setAttribute("aria-pressed", String(isHidden));
+    });
+  });
+
+  // Registration validation
+  const signupForm = document.getElementById("signup-form");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirm-password");
+  const signupMessage = document.getElementById("signup-message");
+
+  confirmPassword.addEventListener("input", () => {
+    confirmPassword.setCustomValidity(
+      confirmPassword.value && confirmPassword.value !== password.value
+        ? "Passwords do not match."
+        : ""
+    );
+  });
+
+  password.addEventListener("input", () => {
+    confirmPassword.setCustomValidity(
+      confirmPassword.value && confirmPassword.value !== password.value
+        ? "Passwords do not match."
+        : ""
+    );
+  });
+
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setCustomValidity("Passwords do not match.");
+      confirmPassword.reportValidity();
+      return;
+    }
+
+    signupMessage.textContent =
+      "Registration form validated! Account creation will be connected to the backend later.";
+  });
+</script>
+
+</body>
+</html>

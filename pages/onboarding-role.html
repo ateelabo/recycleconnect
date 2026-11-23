@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Account Type | RecycleConnect</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-slate-50 flex items-center justify-center px-5 py-10">
+
+  <main class="w-full max-w-lg">
+
+    <div class="text-center mb-10">
+      <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center text-4xl">
+        ♻️
+      </div>
+
+      <h1 class="text-3xl font-bold text-slate-900">
+        Welcome to RecycleConnect
+      </h1>
+
+      <p class="mt-3 text-slate-500">
+        How would you like to use RecycleConnect?
+      </p>
+    </div>
+
+    <div class="space-y-4">
+
+      <!-- Household -->
+      <button
+        onclick="selectRole('household')"
+        class="w-full rounded-2xl border-2 border-slate-200 bg-white p-6 text-left transition hover:border-green-500 hover:shadow-lg"
+      >
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-green-100 text-3xl">
+            🏠
+          </div>
+
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Household</h2>
+            <p class="mt-1 text-sm text-slate-500">
+              Schedule recycling pickups for your home and earn rewards.
+            </p>
+          </div>
+
+          <span class="ml-auto text-2xl text-green-600">→</span>
+        </div>
+      </button>
+
+      <!-- Estate -->
+      <button
+        onclick="selectRole('estate')"
+        class="w-full rounded-2xl border-2 border-slate-200 bg-white p-6 text-left transition hover:border-green-500 hover:shadow-lg"
+      >
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-3xl">
+            🏢
+          </div>
+
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Estate</h2>
+            <p class="mt-1 text-sm text-slate-500">
+              Manage recycling pickups for an entire estate or community.
+            </p>
+          </div>
+
+          <span class="ml-auto text-2xl text-green-600">→</span>
+        </div>
+      </button>
+
+    </div>
+
+  </main>
+
+  <script>
+    function selectRole(role) {
+      localStorage.setItem("recycleconnect_role", role);
+
+      window.location.href =
+        `./household-onboarding.html?role=${role}`;
+    }
+  </script>
+
+</body>
+</html>

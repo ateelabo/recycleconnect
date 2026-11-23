@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16a34a">
+  <title>RecycleConnect | Get Started</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 text-white">
+
+  <main class="flex min-h-screen flex-col px-6 py-8">
+
+    <header class="flex items-center gap-2">
+      <span class="text-2xl">♻️</span>
+      <h2 class="text-lg font-bold">Recycle Connect</h2>
+    </header>
+
+    <section class="flex flex-1 flex-col items-center justify-center text-center">
+
+      <div class="mb-6 flex h-36 w-36 items-center justify-center ">
+        <span class="text-8xl">♻️</span>
+      </div>
+
+      <h1 class="text-3xl font-extrabold">Recycle Connect</h1>
+
+
+
+    </section>
+
+    <section class="mx-auto w-full max-w-md space-y-4 pb-12">
+
+      <p id="selected-role" class="mb-5 text-center text-sm font-medium text-white/90">
+        Welcome! Choose how to continue.
+      </p>
+
+      <a href="./login.html"
+        class="block rounded-xl bg-white px-6 py-4 text-center font-bold text-green-700 shadow-lg transition hover:bg-green-50">
+        Login
+      </a>
+
+      <a href="./signup.html"
+        class="block rounded-xl border border-white/70 bg-white/10 px-6 py-4 text-center font-bold text-white transition hover:bg-white hover:text-green-700">
+        Sign Up
+      </a>
+
+
+<!-- Google Sign In -->
+<button
+  type="button"
+  id="google-signin"
+  class="flex w-full items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 font-bold text-green-700 shadow-lg transition hover:bg-green-50 active:scale-95"
+>
+  
+<svg class="h-5 w-5" viewBox="0 0 48 48" aria-hidden="true">
+  <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.9 6.1-15z"/>
+  <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3A20 20 0 0 0 24 44z"/>
+  <path fill="#FBBC05" d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.8a20 20 0 0 0 0 17.8z"/>
+  <path fill="#EA4335" d="M24 12.1c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6.1 29.5 4 24 4A20 20 0 0 0 5.8 15.1l6.8 5.3c1.6-4.7 6.1-8.3 11.4-8.3z"/>
+</svg>
+
+  Continue with Google
+</button>
+
+
+    </section>
+
+  </main>
+
+  <script>
+    const role = new URLSearchParams(window.location.search).get("role");
+
+if (role) {
+  document.getElementById("selected-role").textContent =
+    `Welcome, ${role}! Choose how to continue.`;
+}
+
+document.getElementById("google-signin").addEventListener("click", () => {
+  alert("Google Sign-In integration is coming soon!");
+});
+  </script>
+
+</body>
+</html>

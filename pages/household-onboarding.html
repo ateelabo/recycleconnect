@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Profile | RecycleConnect</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6">
+
+  <main class="mx-auto max-w-2xl">
+
+    <a href="./onboarding-role.html"
+       class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-900">
+      <span class="text-xl">←</span> Back
+    </a>
+
+    <header class="mb-8">
+      <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl">
+        ♻️
+      </div>
+
+      <p id="account-type" class="mb-2 text-sm font-semibold uppercase tracking-wider text-green-700">
+        Household Setup
+      </p>
+
+      <h1 class="text-3xl font-bold text-slate-900">
+        Let's get you started
+      </h1>
+
+      <p class="mt-2 text-sm leading-6 text-slate-500">
+        Tell us a little about yourself and your recycling pickup preferences.
+      </p>
+    </header>
+
+    <form id="onboarding-form" class="space-y-7 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+
+      <!-- Personal Information -->
+      <section>
+        <h2 class="mb-5 text-lg font-bold text-slate-900">Personal Information</h2>
+
+        <div class="space-y-4">
+
+          <div>
+            <label for="full-name" class="mb-2 block text-sm font-medium text-slate-700">
+              Full Name
+            </label>
+            <input id="full-name" type="text" required
+              placeholder="Enter your full name"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+          </div>
+
+          <div>
+            <label for="phone" class="mb-2 block text-sm font-medium text-slate-700">
+              Phone Number
+            </label>
+            <input id="phone" type="tel" required
+              placeholder="e.g. 08012345678"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+          </div>
+
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- Address -->
+      <section>
+        <h2 class="mb-5 text-lg font-bold text-slate-900">Pickup Address</h2>
+
+        <div class="space-y-4">
+
+          <div>
+            <label for="house-number" class="mb-2 block text-sm font-medium text-slate-700">
+              House / Building Number
+            </label>
+            <input id="house-number" type="text" required
+              placeholder="e.g. No. 12"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+          </div>
+
+          <div>
+            <label for="street" class="mb-2 block text-sm font-medium text-slate-700">
+              Street Address
+            </label>
+            <input id="street" type="text" required
+              placeholder="Enter your street name"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+          </div>
+
+          <div id="estate-field" class="hidden">
+            <label for="estate-name" class="mb-2 block text-sm font-medium text-slate-700">
+              Estate / Community Name
+            </label>
+            <input id="estate-name" type="text"
+              placeholder="Enter estate name"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="city" class="mb-2 block text-sm font-medium text-slate-700">
+                City
+              </label>
+              <input id="city" type="text" required
+                placeholder="Enter city"
+                class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+            </div>
+
+            <div>
+              <label for="state" class="mb-2 block text-sm font-medium text-slate-700">
+                State
+              </label>
+              <input id="state" type="text" required
+                placeholder="Enter state"
+                class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- Pickup Interval -->
+      <section>
+        <h2 class="mb-2 text-lg font-bold text-slate-900">Pickup Schedule</h2>
+        <p class="mb-4 text-sm text-slate-500">How often would you like us to collect your recyclables?</p>
+
+        <div class="grid grid-cols-2 gap-3">
+
+          <label class="cursor-pointer">
+            <input type="radio" name="interval" value="weekly" required class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center transition peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-2xl">📅</span>
+              <span class="mt-2 block font-semibold text-slate-800">Weekly</span>
+              <span class="text-xs text-slate-500">Every week</span>
+            </div>
+          </label>
+
+          <label class="cursor-pointer">
+            <input type="radio" name="interval" value="bi-weekly" class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center transition peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-2xl">🗓️</span>
+              <span class="mt-2 block font-semibold text-slate-800">Bi-weekly</span>
+              <span class="text-xs text-slate-500">Every two weeks</span>
+            </div>
+          </label>
+
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- Materials -->
+      <section>
+        <h2 class="mb-2 text-lg font-bold text-slate-900">Usual Materials</h2>
+        <p class="mb-4 text-sm text-slate-500">Select the recyclable materials you usually have.</p>
+
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+
+          <label class="cursor-pointer">
+            <input type="checkbox" name="materials" value="PET" class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-3xl">🧴</span>
+              <span class="mt-2 block text-sm font-semibold">PET</span>
+            </div>
+          </label>
+
+          <label class="cursor-pointer">
+            <input type="checkbox" name="materials" value="Cans" class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-3xl">🥫</span>
+              <span class="mt-2 block text-sm font-semibold">Cans</span>
+            </div>
+          </label>
+
+          <label class="cursor-pointer">
+            <input type="checkbox" name="materials" value="Cartons" class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-3xl">📦</span>
+              <span class="mt-2 block text-sm font-semibold">Cartons</span>
+            </div>
+          </label>
+
+          <label class="cursor-pointer">
+            <input type="checkbox" name="materials" value="Glass" class="peer sr-only">
+            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="block text-3xl">🍾</span>
+              <span class="mt-2 block text-sm font-semibold">Glass</span>
+            </div>
+          </label>
+
+        </div>
+      </section>
+
+      <button type="submit"
+        class="w-full rounded-xl bg-green-600 py-4 font-bold text-white transition hover:bg-green-700">
+        Complete Setup →
+      </button>
+
+      <p id="form-message" class="text-center text-sm text-green-700" aria-live="polite"></p>
+
+    </form>
+
+    <p class="mt-6 text-center text-xs text-slate-400">
+      RecycleConnect · Recycle. Earn. Sustain.
+    </p>
+
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const role = localStorage.getItem("recycleconnect_role") || params.get("role") || "household";
+
+    const accountType = document.getElementById("account-type");
+    const estateField = document.getElementById("estate-field");
+    const estateName = document.getElementById("estate-name");
+
+    accountType.textContent =
+      role === "estate" ? "Estate Setup" : "Household Setup";
+
+    if (role === "estate") {
+      estateField.classList.remove("hidden");
+      estateName.required = true;
+    }
+
+    document.getElementById("onboarding-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const materials = Array.from(
+        document.querySelectorAll('input[name="materials"]:checked')
+      ).map(input => input.value);
+
+      if (materials.length === 0) {
+        alert("Please select at least one recyclable material.");
+        return;
+      }
+
+      const profile = {
+        role,
+        fullName: document.getElementById("full-name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        houseNumber: document.getElementById("house-number").value.trim(),
+        street: document.getElementById("street").value.trim(),
+        estateName: estateName.value.trim(),
+        city: document.getElementById("city").value.trim(),
+        state: document.getElementById("state").value.trim(),
+        interval: document.querySelector('input[name="interval"]:checked').value,
+        materials
+      };
+
+      localStorage.setItem("recycleconnect_profile", JSON.stringify(profile));
+
+      document.getElementById("form-message").textContent =
+        "Your information has been saved successfully!";
+
+      setTimeout(() => {
+        window.location.href = "./household-dashboard.html";
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>

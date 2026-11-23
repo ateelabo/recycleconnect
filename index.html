@@ -11,30 +11,45 @@
 
 <body class="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white">
 
-  <main class="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
 
     <!-- Logo -->
-    <div class="mb-5 flex h-36 w-36 items-center justify-center rounded-full bg-white shadow-xl">
-      <span class="text-8xl text-green-600">♻</span>
+    <div class="mb-7 flex h-36 w-36 items-center justify-center">
+      <span class="text-8xl text-green-600">♻️</span>
     </div>
 
-    <!-- App Name -->
-    <h1 class="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-      Recycle<br>
-      Connect
+    <!-- App name -->
+    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+      Recycle Connect
     </h1>
 
-    <!-- Tagline -->
     <p class="mt-4 text-base font-medium text-white/90">
       Recycle. Earn. Sustain.
     </p>
 
-    <!-- Version -->
-    <span class="absolute bottom-8 text-xs font-medium text-white/80">
-      v1.0.0
-    </span>
+    <!-- Loading indicator -->
+    <div class="mt-12 flex items-center gap-2">
+      <span class="h-2 w-2 animate-bounce rounded-full bg-white"></span>
+      <span class="h-2 w-2 animate-bounce rounded-full bg-white [animation-delay:150ms]"></span>
+      <span class="h-2 w-2 animate-bounce rounded-full bg-white [animation-delay:300ms]"></span>
+    </div>
+
+    <p class="mt-3 text-xs text-white/80">
+      Preparing your experience...
+    </p>
+
+    <footer class="absolute bottom-8 text-xs text-white/70">
+      Version 1.0.0
+    </footer>
 
   </main>
+
+  <script>
+    // Automatically move to role selection after 2.5 seconds
+    setTimeout(() => {
+      window.location.replace("./pages/auth-choice.html");
+    }, 2500);
+  </script>
 
 </body>
 </html>

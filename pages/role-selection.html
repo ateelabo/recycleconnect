@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Role | RecycleConnect</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white">
+
+  <main class="relative flex min-h-screen flex-col px-6 py-8">
+
+    <header class="flex items-center gap-2">
+      <span class="text-2xl">♻️</span>
+      <h2 class="text-lg font-bold">Recycle Connect</h2>
+    </header>
+
+    <section class="flex flex-1 flex-col items-center justify-center text-center">
+
+      <!-- <div class="mb-6 flex h-36 w-36 items-center justify-center rounded-full bg-white shadow-xl"> -->
+        <span class="text-8xl text-green-600">♻️</span>
+      </div>
+
+      <h1 class="text-3xl font-bold sm:text-4xl">Recycle Connect</h1>
+
+
+    </section>
+
+    <section class="mx-auto w-full max-w-md pb-8">
+
+      <p class="mb-5 text-center text-sm font-medium">
+        Continue as
+      </p>
+
+      <div class="grid grid-cols-2 gap-4">
+
+        <button data-role="Collector"
+          class="rounded-xl bg-white px-4 py-4 font-bold text-green-700 shadow-lg hover:bg-green-50">
+          Collector
+        </button>
+
+        <button data-role="Household"
+          class="rounded-xl bg-white px-4 py-4 font-bold text-green-700 shadow-lg hover:bg-green-50">
+          Household
+        </button>
+
+      </div>
+
+      <div class="mt-5 flex justify-center">
+        <button data-role="Admin"
+          class="w-40 rounded-xl border border-white/50 bg-white/10 px-6 py-3 font-semibold hover:bg-white hover:text-green-700">
+          Admin
+        </button>
+      </div>
+
+    </section>
+
+    <footer class="text-center text-xs text-white/70">
+      RecycleConnect · Version 1.0.0
+    </footer>
+
+  </main>
+
+  <script>
+    document.querySelectorAll("[data-role]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const role = button.dataset.role;
+
+        window.location.href =
+          `./auth-choice.html?role=${encodeURIComponent(role)}`;
+      });
+    });
+  </script>
+
+</body>
+</html>
