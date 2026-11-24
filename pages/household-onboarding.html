@@ -36,9 +36,10 @@
         Household Setup
       </p>
 
-      <h1 class="text-center text-2xl font-bold tracking-tight text-slate-900">
-        Household Address
-      </h1>
+      <h1 id="page-title"
+    class="text-center text-2xl font-bold tracking-tight text-slate-900">
+  Household Address
+</h1>
 
       <p class="mx-auto mt-2 max-w-xs text-center text-sm leading-5 text-slate-500">
         Set your pickup location and preferred collection schedule.
@@ -226,32 +227,6 @@
 
     </form>
 
-    <!-- Bottom navigation -->
-    <nav class="mt-5 grid grid-cols-4 border-t border-slate-200 bg-[#f8faf7] pt-3">
-      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="8" r="3"/>
-          <path d="M5 21a7 7 0 0 1 14 0"/>
-        </svg>
-        <span class="text-[10px]">Profile</span>
-      </a>
-
-      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
-        🥫
-        <span class="text-[10px]">Can</span>
-      </a>
-
-      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
-        🍾
-        <span class="text-[10px]">Glass</span>
-      </a>
-
-      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
-        🧴
-        <span class="text-[10px]">PET</span>
-      </a>
-    </nav>
-
   </main>
 
   <script>
@@ -271,6 +246,9 @@
 
     accountType.textContent =
       role === "estate" ? "Estate Setup" : "Household Setup";
+
+      document.getElementById("page-title").textContent =
+  role === "estate" ? "Estate Address" : "Household Address";
 
     if (role === "estate") {
       estateField.classList.remove("hidden");

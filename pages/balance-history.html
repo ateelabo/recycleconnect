@@ -57,116 +57,108 @@
     </section>
 
     <!-- History -->
-    <section class="flex-1">
+<section class="flex-1">
 
-      <div class="mb-3">
-        <h2 class="text-lg font-bold text-slate-900">History</h2>
-        <p class="text-xs text-slate-500">Your recycling and rewards activity</p>
+  <div class="mb-3">
+    <h2 class="text-lg font-bold text-slate-900">History</h2>
+    <p class="text-xs text-slate-500">
+      Your recycling and rewards activity
+    </p>
+  </div>
+
+  <!-- Dynamic History -->
+  <div id="history-list"
+        class="custom-scrollbar max-h-96 space-y-5 overflow-y-auto overscroll-contain pr-2">
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center">
+      <p class="text-sm font-semibold text-slate-700">
+        No activity yet
+      </p>
+      <p class="mt-1 text-xs text-slate-400">
+        Your recycling activity will appear here.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Redeem Rewards Modal -->
+<div id="redeem-modal"
+     class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 px-5">
+
+  <div class="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl">
+
+    <div class="mb-5 flex items-center justify-between">
+      <h2 class="text-lg font-bold text-slate-900">
+        Redeem Rewards
+      </h2>
+
+      <button id="close-redeem"
+              type="button"
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+        ✕
+      </button>
+    </div>
+
+    <div class="mb-5 rounded-2xl bg-green-50 p-5 text-center">
+      <p class="text-xs font-medium text-green-700">
+        Available Points
+      </p>
+
+      <h3 id="redeem-available-points"
+          class="mt-2 text-3xl font-extrabold text-green-800">
+        0
+      </h3>
+
+      <p class="mt-1 text-xs text-green-700">
+        1 Point = ₦1
+      </p>
+    </div>
+
+    <form id="redeem-form" class="space-y-4">
+
+      <div>
+        <label for="redeem-points"
+               class="mb-2 block text-sm font-semibold text-slate-700">
+          Points to Redeem
+        </label>
+
+        <input id="redeem-points"
+               type="number"
+               min="1"
+               step="1"
+               required
+               placeholder="Enter points"
+               class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-green-600">
       </div>
 
-      <!-- This Week -->
-      <div class="mb-5">
-        <h3 class="mb-3 text-sm font-semibold text-slate-700">This Week</h3>
+      <div class="rounded-xl bg-slate-50 p-4">
+        <p class="text-xs text-slate-500">You will receive</p>
 
-        <div class="space-y-2">
-
-          <!-- Recent Pickup -->
-          <article class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-700">
-               <svg xmlns="http://www.w3.org/2000/svg"
-     width="26" height="26" viewBox="0 0 24 24"
-     fill="none" stroke="currentColor"
-     stroke-width="1.8" stroke-linecap="round"
-     stroke-linejoin="round">
-  <path d="M10 17h4V5H2v12h3"/>
-  <path d="M14 9h4l4 4v4h-3"/>
-  <circle cx="7.5" cy="17.5" r="2.5"/>
-  <circle cx="17.5" cy="17.5" r="2.5"/>
-</svg>
-            </div>
-
-            <div class="min-w-0 flex-1">
-              <h4 class="text-sm font-semibold text-slate-800">Recent Pickup</h4>
-              <p class="mt-1 text-xs text-slate-400">3 days ago</p>
-            </div>
-
-            <p class="whitespace-nowrap text-sm font-bold text-green-600">+50 Points</p>
-          </article>
-
-          <!-- Reward Redeemed -->
-          <article class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
-               <svg xmlns="http://www.w3.org/2000/svg"
-     class="text-green-600"
-     width="25" height="25"
-     viewBox="0 0 24 24"
-     fill="none" stroke="currentColor"
-     stroke-width="1.8"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <circle cx="12" cy="8" r="6"/>
-  <path d="m8.21 13-1.5 8L12 18l5.29 3-1.5-8"/>
-  <path d="m9 8 2 2 4-4"/>
-</svg> 
-            </div>
-
-            <div class="min-w-0 flex-1">
-              <h4 class="text-sm font-semibold text-slate-800">Reward Redeemed</h4>
-              <p class="mt-1 text-xs text-slate-400">5 days ago</p>
-            </div>
-
-            <p class="whitespace-nowrap text-sm font-bold text-red-500">-300 Points</p>
-          </article>
-
-          <!-- Bottle Return -->
-          <article class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
-              🍼
-            </div>
-
-            <div class="min-w-0 flex-1">
-              <h4 class="text-sm font-semibold text-slate-800">Bottle Return</h4>
-              <p class="mt-1 text-xs text-slate-400">1 week ago</p>
-            </div>
-
-            <p class="whitespace-nowrap text-sm font-bold text-green-600">+15 Points</p>
-          </article>
-
-        </div>
+        <p id="redeem-naira"
+           class="mt-1 text-2xl font-extrabold text-slate-900">
+          ₦0
+        </p>
       </div>
 
-      <!-- Last Month -->
-      <div class="mb-5">
-        <h3 class="mb-3 text-sm font-semibold text-slate-700">Last Month</h3>
+      <p id="redeem-message"
+         class="hidden text-sm font-medium">
+      </p>
 
-        <article class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-700">
-             <svg xmlns="http://www.w3.org/2000/svg"
-     width="26" height="26" viewBox="0 0 24 24"
-     fill="none" stroke="currentColor"
-     stroke-width="1.8" stroke-linecap="round"
-     stroke-linejoin="round">
-  <path d="M10 17h4V5H2v12h3"/>
-  <path d="M14 9h4l4 4v4h-3"/>
-  <circle cx="7.5" cy="17.5" r="2.5"/>
-  <circle cx="17.5" cy="17.5" r="2.5"/>
-</svg>
-          </div>
+      <button type="submit"
+              class="w-full rounded-xl bg-green-700 py-3 text-sm font-bold text-white transition hover:bg-green-800">
+        Confirm Redemption
+      </button>
 
-          <div class="min-w-0 flex-1">
-            <h4 class="text-sm font-semibold text-slate-800">One-Off Pickup</h4>
-            <p class="mt-1 text-xs text-slate-400">2 weeks ago</p>
-          </div>
+    </form>
 
-          <p class="whitespace-nowrap text-sm font-bold text-green-600">+200 Points</p>
+    <p class="mt-4 text-center text-[10px] text-slate-400">
+      Demo redemption. Real payouts require backend integration.
+    </p>
 
-          
-        </article>
-      </div>
-      
-
-    </section>
-
+  </div>
+</div>
     <!-- Bottom Navigation -->
    <nav id="bottom-navigation"
      class="fixed bottom-0 left-0 z-50 grid w-full grid-cols-4 border-t border-slate-200 bg-[#f8faf7] px-4 pt-3 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_15px_rgba(0,0,0,0.04)]">
@@ -181,10 +173,13 @@
 
   <script>
   // Load wallet information
-  const wallet = JSON.parse(
-    localStorage.getItem("recycleconnect_wallet") ||
-    '{"balance":0,"points":0}'
-  );
+  let wallet = JSON.parse(
+  localStorage.getItem("recycleconnect_wallet") ||
+  '{"balance":0,"points":0}'
+);
+
+wallet.balance = Number(wallet.balance || 0);
+wallet.points = Number(wallet.points || 0);
 
   document.getElementById("history-points").innerHTML =
     `${Number(wallet.points || 0).toLocaleString()}
@@ -285,9 +280,9 @@
 
         const title = document.createElement("h4");
         title.className = "text-sm font-semibold text-slate-800";
-        title.textContent = item.material
-          ? `${item.material} Pickup`
-          : "Pickup Request";
+        title.textContent = item.title || (
+  item.material ? `${item.material} Pickup` : "Pickup Request"
+);
 
         const date = document.createElement("p");
         date.className = "mt-1 text-xs text-slate-400";
@@ -300,7 +295,9 @@
         const status = document.createElement("p");
         status.className =
           "whitespace-nowrap text-xs font-semibold text-green-700";
-        status.textContent = item.status || "Recorded";
+        status.textContent = item.points !== undefined
+  ? `${item.points > 0 ? "+" : ""}${item.points} Points`
+  : item.status || "Recorded";
 
         details.append(title, date);
         card.append(icon, details, status);
@@ -314,9 +311,91 @@
 
   renderHistory();
 
-  document.getElementById("redeem-button").addEventListener("click", () => {
-    alert("Rewards redemption will be available when the Rewards section is connected.");
-  });
+ // Rewards Redemption
+const redeemModal = document.getElementById("redeem-modal");
+const redeemInput = document.getElementById("redeem-points");
+const redeemAvailable = document.getElementById("redeem-available-points");
+const redeemNaira = document.getElementById("redeem-naira");
+const redeemMessage = document.getElementById("redeem-message");
+
+// Open modal
+document.getElementById("redeem-button").addEventListener("click", () => {
+  redeemAvailable.textContent = wallet.points.toLocaleString();
+  redeemInput.value = "";
+  redeemNaira.textContent = "₦0";
+  redeemMessage.classList.add("hidden");
+
+  redeemModal.classList.remove("hidden");
+  redeemModal.classList.add("flex");
+});
+
+// Close modal
+document.getElementById("close-redeem").addEventListener("click", () => {
+  redeemModal.classList.add("hidden");
+  redeemModal.classList.remove("flex");
+});
+
+// Calculate Naira value
+redeemInput.addEventListener("input", () => {
+  const points = Number(redeemInput.value);
+
+  redeemNaira.textContent =
+    `₦${(points > 0 ? points : 0).toLocaleString()}`;
+});
+
+// Confirm redemption
+document.getElementById("redeem-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const points = Number(redeemInput.value);
+
+  if (!Number.isInteger(points) || points <= 0) {
+    alert("Please enter a valid number of points.");
+    return;
+  }
+
+  if (points > wallet.points) {
+    alert("You don't have enough points.");
+    return;
+  }
+
+  // Deduct points and credit Naira balance
+  wallet.points -= points;
+  wallet.balance += points;
+
+  localStorage.setItem(
+    "recycleconnect_wallet",
+    JSON.stringify(wallet)
+  );
+
+  // Record transaction
+ history.push({
+  title: "Reward Redeemed",
+  points: -points,
+  status: "Redeemed",
+  createdAt: new Date().toISOString()
+});
+
+  localStorage.setItem(
+    "recycleconnect_history",
+    JSON.stringify(history)
+  );
+
+  // Update displayed wallet
+  document.getElementById("history-points").innerHTML =
+    `${wallet.points.toLocaleString()}
+     <span class="text-xl font-semibold">Points</span>`;
+
+  document.getElementById("history-naira").textContent =
+    `₦${wallet.balance.toLocaleString()}`;
+
+  redeemModal.classList.add("hidden");
+  redeemModal.classList.remove("flex");
+
+  alert(`Successfully redeemed ${points} points for ₦${points.toLocaleString()}!`);
+
+  renderHistory();
+});
 </script>
 </body>
 </html>
