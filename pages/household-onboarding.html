@@ -4,216 +4,266 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complete Your Profile | RecycleConnect</title>
+  <title>Household Address | RecycleConnect</title>
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
-<body class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6">
+<body class="min-h-screen bg-[#f8faf7] text-slate-800">
 
-  <main class="mx-auto max-w-2xl">
+  <main class="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 pb-5 pt-5">
 
-    <a href="./onboarding-role.html"
-       class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-900">
-      <span class="text-xl">←</span> Back
-    </a>
+    <!-- Header -->
+    <header class="mb-5">
+      <div class="mb-3 flex items-center justify-between">
+        <a href="./onboarding-role.html"
+           class="flex h-9 w-9 items-center justify-center rounded-full text-xl text-green-700 hover:bg-green-50"
+           aria-label="Go back">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </a>
 
-    <header class="mb-8">
-      <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl">
-        ♻️
+        <div class="flex h-14 w-14 items-center justify-center  text-green-700">
+          <div class="mx-auto mb-3 flex h-16 w-16 items-center justify-center ">
+          <span class="text-4xl">♻️</span>
+        </div>
+        </div>
+
+        <div class="w-9"></div>
       </div>
 
-      <p id="account-type" class="mb-2 text-sm font-semibold uppercase tracking-wider text-green-700">
+      <p id="account-type" class="mb-1 text-center text-xs font-semibold uppercase tracking-widest text-green-700">
         Household Setup
       </p>
 
-      <h1 class="text-3xl font-bold text-slate-900">
-        Let's get you started
+      <h1 class="text-center text-2xl font-bold tracking-tight text-slate-900">
+        Household Address
       </h1>
 
-      <p class="mt-2 text-sm leading-6 text-slate-500">
-        Tell us a little about yourself and your recycling pickup preferences.
+      <p class="mx-auto mt-2 max-w-xs text-center text-sm leading-5 text-slate-500">
+        Set your pickup location and preferred collection schedule.
       </p>
     </header>
 
-    <form id="onboarding-form" class="space-y-7 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+    <!-- Form -->
+    <form id="onboarding-form" class="flex flex-1 flex-col gap-4">
 
-      <!-- Personal Information -->
+      <!-- Current location -->
       <section>
-        <h2 class="mb-5 text-lg font-bold text-slate-900">Personal Information</h2>
+        <button
+          type="button"
+          id="location-button"
+          class="flex w-full items-center justify-between rounded-xl border border-green-300 bg-green-50 px-3 py-3 text-sm font-semibold text-green-800 transition hover:bg-green-100"
+        >
+          <span class="flex items-center gap-2">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            Use My Current Location
+          </span>
 
-        <div class="space-y-4">
+          <span id="location-status" class="rounded-full bg-white px-2 py-1 text-[10px] font-medium text-slate-500">
+            Auto-fill
+          </span>
+        </button>
 
-          <div>
-            <label for="full-name" class="mb-2 block text-sm font-medium text-slate-700">
-              Full Name
-            </label>
-            <input id="full-name" type="text" required
-              placeholder="Enter your full name"
-              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-          </div>
+        <p id="location-message" class="mt-1 hidden text-xs text-slate-500"></p>
+      </section>
 
-          <div>
-            <label for="phone" class="mb-2 block text-sm font-medium text-slate-700">
-              Phone Number
-            </label>
-            <input id="phone" type="tel" required
-              placeholder="e.g. 08012345678"
-              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-          </div>
+      <!-- Street address -->
+      <section>
+        <label for="street" class="mb-1.5 block text-sm font-semibold text-slate-700">
+          Street Address
+        </label>
 
+        <div class="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-3 focus-within:border-green-600 focus-within:ring-2 focus-within:ring-green-100">
+          <svg class="h-5 w-5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 10.5 12 3l9 7.5"/>
+            <path d="M5 9v11h14V9M9 20v-7h6v7"/>
+          </svg>
+
+          <input
+            id="street"
+            type="text"
+            required
+            placeholder="Enter street name & house number"
+            class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
+          >
         </div>
       </section>
 
-      <div class="border-t border-slate-100"></div>
+      <!-- City and postal code -->
+      <section class="grid grid-cols-2 gap-3">
+        <div>
+          <label for="city" class="mb-1.5 block text-sm font-semibold text-slate-700">
+            City
+          </label>
 
-      <!-- Address -->
-      <section>
-        <h2 class="mb-5 text-lg font-bold text-slate-900">Pickup Address</h2>
+          <div class="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-2.5 py-3 focus-within:border-green-600">
+            <svg class="h-5 w-5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+            </svg>
 
-        <div class="space-y-4">
-
-          <div>
-            <label for="house-number" class="mb-2 block text-sm font-medium text-slate-700">
-              House / Building Number
-            </label>
-            <input id="house-number" type="text" required
-              placeholder="e.g. No. 12"
-              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
+            <input
+              id="city"
+              type="text"
+              required
+              placeholder="Enter city"
+              class="w-full min-w-0 bg-transparent text-sm outline-none placeholder:text-slate-400"
+            >
           </div>
+        </div>
 
-          <div>
-            <label for="street" class="mb-2 block text-sm font-medium text-slate-700">
-              Street Address
-            </label>
-            <input id="street" type="text" required
-              placeholder="Enter your street name"
-              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-          </div>
+        <div>
+          <label for="postal-code" class="mb-1.5 block text-sm font-semibold text-slate-700">
+            Postal Code
+          </label>
 
-          <div id="estate-field" class="hidden">
-            <label for="estate-name" class="mb-2 block text-sm font-medium text-slate-700">
-              Estate / Community Name
-            </label>
-            <input id="estate-name" type="text"
-              placeholder="Enter estate name"
-              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label for="city" class="mb-2 block text-sm font-medium text-slate-700">
-                City
-              </label>
-              <input id="city" type="text" required
-                placeholder="Enter city"
-                class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-            </div>
-
-            <div>
-              <label for="state" class="mb-2 block text-sm font-medium text-slate-700">
-                State
-              </label>
-              <input id="state" type="text" required
-                placeholder="Enter state"
-                class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100">
-            </div>
-          </div>
-
+          <input
+            id="postal-code"
+            type="text"
+            placeholder="Enter Postal Code"
+            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-green-600"
+          >
         </div>
       </section>
 
-      <div class="border-t border-slate-100"></div>
-
-      <!-- Pickup Interval -->
+      <!-- Landmark -->
       <section>
-        <h2 class="mb-2 text-lg font-bold text-slate-900">Pickup Schedule</h2>
-        <p class="mb-4 text-sm text-slate-500">How often would you like us to collect your recyclables?</p>
+        <label for="landmark" class="mb-1.5 block text-sm font-semibold text-slate-700">
+          Landmark / Pickup Note <span class="font-normal text-slate-400">(Optional)</span>
+        </label>
+
+        <div class="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-3 focus-within:border-green-600">
+          <svg class="h-5 w-5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 11v5m0-8h.01"/>
+          </svg>
+
+          <input
+            id="landmark"
+            type="text"
+            placeholder="e.g. Gate code, near main junction"
+            class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
+          >
+        </div>
+      </section>
+
+      <!-- Estate name (only for Estate accounts) -->
+      <section id="estate-field" class="hidden">
+        <label for="estate-name" class="mb-1.5 block text-sm font-semibold text-slate-700">
+          Estate Name
+        </label>
+
+        <input
+          id="estate-name"
+          type="text"
+          placeholder="Enter estate name"
+          class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm outline-none focus:border-green-600"
+        >
+      </section>
+
+      <!-- Collection interval -->
+      <section class="mt-1">
+        <div class="mb-2 flex items-center justify-between gap-2">
+          <h2 class="text-sm font-semibold text-slate-800">Collection Interval</h2>
+          <span class="text-xs text-slate-400">Choose pickup frequency</span>
+        </div>
 
         <div class="grid grid-cols-2 gap-3">
 
-          <label class="cursor-pointer">
-            <input type="radio" name="interval" value="weekly" required class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center transition peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-2xl">📅</span>
-              <span class="mt-2 block font-semibold text-slate-800">Weekly</span>
-              <span class="text-xs text-slate-500">Every week</span>
+          <label class="relative cursor-pointer">
+            <input type="radio" name="interval" value="weekly" checked class="peer sr-only">
+
+            <div class="rounded-2xl border-2 border-slate-300 bg-white p-3 transition peer-checked:border-green-600 peer-checked:bg-green-50">
+              <span class="mb-3 inline-flex rounded-full bg-green-700 px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white">
+                Most Popular
+              </span>
+
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-slate-800">Weekly</span>
+                <span class="flex h-4 w-4 items-center justify-center rounded-full border border-slate-400 peer-checked:border-green-700"></span>
+              </div>
+
+              <p class="mt-1 text-xs text-slate-500">Every 7 days</p>
             </div>
           </label>
 
           <label class="cursor-pointer">
             <input type="radio" name="interval" value="bi-weekly" class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center transition peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-2xl">🗓️</span>
-              <span class="mt-2 block font-semibold text-slate-800">Bi-weekly</span>
-              <span class="text-xs text-slate-500">Every two weeks</span>
+
+            <div class="rounded-2xl border-2 border-slate-300 bg-white p-3 transition peer-checked:border-green-600 peer-checked:bg-green-50">
+              <div class="mb-3 h-6"></div>
+
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-slate-800">Bi-Weekly</span>
+                <span class="h-4 w-4 rounded-full border border-slate-400"></span>
+              </div>
+
+              <p class="mt-1 text-xs text-slate-500">Every 2 weeks</p>
             </div>
           </label>
 
         </div>
       </section>
 
-      <div class="border-t border-slate-100"></div>
+      <!-- Save -->
+      <div class="mt-auto pt-3">
+        <p id="form-message" class="mb-2 text-center text-xs text-red-600"></p>
 
-      <!-- Materials -->
-      <section>
-        <h2 class="mb-2 text-lg font-bold text-slate-900">Usual Materials</h2>
-        <p class="mb-4 text-sm text-slate-500">Select the recyclable materials you usually have.</p>
+        <button
+          type="submit"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-green-700 px-4 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-green-800 active:scale-[0.99]"
+        >
+          Save & Continue
 
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-
-          <label class="cursor-pointer">
-            <input type="checkbox" name="materials" value="PET" class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-3xl">🧴</span>
-              <span class="mt-2 block text-sm font-semibold">PET</span>
-            </div>
-          </label>
-
-          <label class="cursor-pointer">
-            <input type="checkbox" name="materials" value="Cans" class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-3xl">🥫</span>
-              <span class="mt-2 block text-sm font-semibold">Cans</span>
-            </div>
-          </label>
-
-          <label class="cursor-pointer">
-            <input type="checkbox" name="materials" value="Cartons" class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-3xl">📦</span>
-              <span class="mt-2 block text-sm font-semibold">Cartons</span>
-            </div>
-          </label>
-
-          <label class="cursor-pointer">
-            <input type="checkbox" name="materials" value="Glass" class="peer sr-only">
-            <div class="rounded-xl border-2 border-slate-200 p-4 text-center peer-checked:border-green-600 peer-checked:bg-green-50">
-              <span class="block text-3xl">🍾</span>
-              <span class="mt-2 block text-sm font-semibold">Glass</span>
-            </div>
-          </label>
-
-        </div>
-      </section>
-
-      <button type="submit"
-        class="w-full rounded-xl bg-green-600 py-4 font-bold text-white transition hover:bg-green-700">
-        Complete Setup →
-      </button>
-
-      <p id="form-message" class="text-center text-sm text-green-700" aria-live="polite"></p>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </button>
+      </div>
 
     </form>
 
-    <p class="mt-6 text-center text-xs text-slate-400">
-      RecycleConnect · Recycle. Earn. Sustain.
-    </p>
+    <!-- Bottom navigation -->
+    <nav class="mt-5 grid grid-cols-4 border-t border-slate-200 bg-[#f8faf7] pt-3">
+      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="3"/>
+          <path d="M5 21a7 7 0 0 1 14 0"/>
+        </svg>
+        <span class="text-[10px]">Profile</span>
+      </a>
+
+      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
+        🥫
+        <span class="text-[10px]">Can</span>
+      </a>
+
+      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
+        🍾
+        <span class="text-[10px]">Glass</span>
+      </a>
+
+      <a href="./household-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400">
+        🧴
+        <span class="text-[10px]">PET</span>
+      </a>
+    </nav>
 
   </main>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const role = localStorage.getItem("recycleconnect_role") || params.get("role") || "household";
+    const role =
+      localStorage.getItem("recycleconnect_role") ||
+      params.get("role") ||
+      "household";
+
+    const previousProfile = JSON.parse(
+      localStorage.getItem("recycleconnect_profile") || "{}"
+    );
 
     const accountType = document.getElementById("account-type");
     const estateField = document.getElementById("estate-field");
@@ -227,39 +277,117 @@
       estateName.required = true;
     }
 
+    // Restore previously saved address details
+    document.getElementById("street").value = previousProfile.street || "";
+    document.getElementById("city").value = previousProfile.city || "";
+    document.getElementById("postal-code").value = previousProfile.postalCode || "";
+    document.getElementById("landmark").value = previousProfile.landmark || "";
+    estateName.value = previousProfile.estateName || "";
+
+    if (previousProfile.interval) {
+      const savedInterval = document.querySelector(
+        `input[name="interval"][value="${previousProfile.interval}"]`
+      );
+
+      if (savedInterval) savedInterval.checked = true;
+    }
+
+    // Current location
+    const locationButton = document.getElementById("location-button");
+    const locationStatus = document.getElementById("location-status");
+    const locationMessage = document.getElementById("location-message");
+
+    let currentCoordinates = previousProfile.coordinates || null;
+
+    locationButton.addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        locationMessage.textContent =
+          "Location is not supported by this browser. Please enter your address manually.";
+        locationMessage.classList.remove("hidden");
+        return;
+      }
+
+      locationStatus.textContent = "Locating...";
+      locationMessage.textContent = "Please allow location access when your browser asks.";
+      locationMessage.classList.remove("hidden");
+      locationButton.disabled = true;
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          currentCoordinates = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          };
+
+          locationStatus.textContent = "Detected";
+          locationMessage.textContent =
+            "Location detected. Please enter your street address and city below.";
+
+          locationButton.disabled = false;
+        },
+        (error) => {
+          locationStatus.textContent = "Try Again";
+          locationButton.disabled = false;
+
+          if (error.code === error.PERMISSION_DENIED) {
+            locationMessage.textContent =
+              "Location permission was denied. You can still enter your address manually.";
+          } else {
+            locationMessage.textContent =
+              "Unable to detect your location. Please enter your address manually.";
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 60000
+        }
+      );
+    });
+
+    // Save profile
     document.getElementById("onboarding-form").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const materials = Array.from(
-        document.querySelectorAll('input[name="materials"]:checked')
-      ).map(input => input.value);
+      const message = document.getElementById("form-message");
+      const interval = document.querySelector(
+        'input[name="interval"]:checked'
+      );
 
-      if (materials.length === 0) {
-        alert("Please select at least one recyclable material.");
+      if (!interval) {
+        message.textContent = "Please choose a collection interval.";
         return;
       }
 
       const profile = {
+        ...previousProfile,
         role,
-        fullName: document.getElementById("full-name").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        houseNumber: document.getElementById("house-number").value.trim(),
+        fullName: previousProfile.fullName || "",
+        phone: previousProfile.phone || "",
+        houseNumber: previousProfile.houseNumber || "",
         street: document.getElementById("street").value.trim(),
-        estateName: estateName.value.trim(),
         city: document.getElementById("city").value.trim(),
-        state: document.getElementById("state").value.trim(),
-        interval: document.querySelector('input[name="interval"]:checked').value,
-        materials
+        state: previousProfile.state || "",
+        postalCode: document.getElementById("postal-code").value.trim(),
+        landmark: document.getElementById("landmark").value.trim(),
+        estateName: estateName.value.trim(),
+        interval: interval.value,
+        materials: previousProfile.materials || [],
+        coordinates: currentCoordinates
       };
 
-      localStorage.setItem("recycleconnect_profile", JSON.stringify(profile));
+      localStorage.setItem(
+        "recycleconnect_profile",
+        JSON.stringify(profile)
+      );
 
-      document.getElementById("form-message").textContent =
-        "Your information has been saved successfully!";
+      message.classList.remove("text-red-600");
+      message.classList.add("text-green-700");
+      message.textContent = "Your address has been saved successfully!";
 
       setTimeout(() => {
         window.location.href = "./household-dashboard.html";
-      }, 1000);
+      }, 800);
     });
   </script>
 

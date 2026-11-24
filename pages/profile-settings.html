@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile & Settings | RecycleConnect</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-[#f8faf7] text-slate-800">
+
+  <main class="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 pb-5 pt-5">
+
+    <!-- Header -->
+    <header class="relative mb-5 flex items-center justify-center">
+      <a href="./household-dashboard.html"
+         aria-label="Go back"
+         class="absolute left-0 flex h-9 w-9 items-center justify-center rounded-full text-green-700 hover:bg-green-50">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </a>
+
+      <h1 class="text-base font-semibold text-slate-800">Profile & Settings</h1>
+    </header>
+
+    <!-- Profile -->
+    <section class="mb-6 flex items-center gap-4">
+      <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+        <svg class="h-9 w-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="3.5"/>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>
+        </svg>
+      </div>
+
+      <div class="min-w-0">
+        <h2 id="profile-name" class="truncate text-lg font-bold text-slate-900">
+          Your Name
+        </h2>
+        <p id="profile-email" class="truncate text-xs text-slate-500">
+          Add your email address
+        </p>
+      </div>
+    </section>
+
+    <!-- Edit Profile Form -->
+<section id="edit-profile-form" class="mb-5 hidden">
+  <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+    <div class="mb-4 flex items-center justify-between">
+      <h2 class="text-base font-bold text-slate-900">Edit Profile</h2>
+      <button id="close-edit-profile"
+              type="button"
+              class="text-sm font-semibold text-slate-400 hover:text-red-500">
+        Close
+      </button>
+    </div>
+
+    <form id="profile-form" class="space-y-3">
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Full Name
+        </label>
+        <input id="edit-fullname" type="text" required
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Email Address
+        </label>
+        <input id="edit-email" type="email" required
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Phone Number
+        </label>
+        <input id="edit-phone" type="tel"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Street Address
+        </label>
+        <input id="edit-street" type="text"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          City
+        </label>
+        <input id="edit-city" type="text"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          State
+        </label>
+        <input id="edit-state" type="text"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <button type="submit"
+              class="w-full rounded-xl bg-green-700 py-3 text-sm font-bold text-white transition hover:bg-green-800">
+        Save Changes
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<!-- Change Password Form -->
+<section id="change-password-form" class="mb-5 hidden">
+  <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+    <div class="mb-4 flex items-center justify-between">
+      <h2 class="text-base font-bold text-slate-900">Change Password</h2>
+
+      <button id="close-password-form"
+              type="button"
+              class="text-sm font-semibold text-slate-400 hover:text-red-500">
+        Close
+      </button>
+    </div>
+
+    <form id="password-form" class="space-y-3">
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Current Password
+        </label>
+        <input id="current-password" type="password" required
+               autocomplete="current-password"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          New Password
+        </label>
+        <input id="new-password" type="password" required minlength="8"
+               autocomplete="new-password"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-slate-600">
+          Confirm New Password
+        </label>
+        <input id="confirm-password" type="password" required minlength="8"
+               autocomplete="new-password"
+               class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none focus:border-green-600">
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Your new password must contain at least 8 characters.
+      </p>
+
+      <button type="submit"
+              class="w-full rounded-xl bg-green-700 py-3 text-sm font-bold text-white transition hover:bg-green-800">
+        Update Password
+      </button>
+
+    </form>
+  </div>
+</section>
+
+    <!-- Account Management -->
+    <section class="mb-5">
+      <h2 class="mb-2 text-sm font-semibold text-slate-800">
+        Account Management
+      </h2>
+
+      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+
+        <button id="edit-profile"
+          class="flex w-full items-center gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition hover:bg-green-50">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M5 21a7 7 0 0 1 14 0"/>
+          </svg>
+          <span class="flex-1 text-sm text-slate-700">Edit Profile</span>
+          <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+
+        <button id="change-password"
+          class="flex w-full items-center gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition hover:bg-green-50">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="4" y="10" width="16" height="11" rx="2"/>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/>
+          </svg>
+          <span class="flex-1 text-sm text-slate-700">Change Password</span>
+          <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+
+        <a href="./household-onboarding.html"
+          class="flex items-center gap-3 px-4 py-3.5 transition hover:bg-green-50">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 10.5 12 3l9 7.5"/>
+            <path d="M5 9v11h14V9M9 20v-7h6v7"/>
+          </svg>
+          <span class="flex-1 text-sm text-slate-700">My Address Book</span>
+          <svg class="h-4 w-4 text-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Service Preferences -->
+    <section class="mb-5">
+      <h2 class="mb-2 text-sm font-semibold text-slate-800">
+        Service Preferences
+      </h2>
+
+      <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5">
+        <div class="flex items-center gap-3">
+          <svg class="h-5 w-5 text-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 11h18M5 11l2-6h10l2 6M6 11v8h12v-8M9 15h6"/>
+          </svg>
+
+          <span class="flex-1 text-sm text-slate-700">Travelling Mode</span>
+
+          <label class="relative inline-flex cursor-pointer items-center">
+            <input id="travel-toggle" type="checkbox" class="peer sr-only">
+            <span class="h-6 w-11 rounded-full bg-slate-300 transition peer-checked:bg-green-600"></span>
+            <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+          </label>
+        </div>
+
+        <p class="ml-8 mt-1 text-xs text-slate-400">
+          Pause your regular pickups while you're away.
+        </p>
+      </div>
+    </section>
+
+    <!-- App Settings -->
+    <section class="mb-5">
+      <h2 class="mb-2 text-sm font-semibold text-slate-800">
+        App Settings
+      </h2>
+
+      <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+
+        <div class="flex items-center gap-3 border-b border-slate-100 px-4 py-3.5">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/>
+          </svg>
+
+          <span class="flex-1 text-sm text-slate-700">Notifications</span>
+
+          <label class="relative inline-flex cursor-pointer items-center">
+            <input id="notification-toggle" type="checkbox" class="peer sr-only">
+            <span class="h-6 w-11 rounded-full bg-slate-300 transition peer-checked:bg-green-600"></span>
+            <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+          </label>
+        </div>
+
+        <button id="privacy-policy"
+          class="flex w-full items-center gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition hover:bg-green-50">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span class="flex-1 text-sm text-slate-700">Privacy Policy</span>
+          <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+
+        <button id="help-center"
+          class="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-green-50">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-1.1 1-1.8 1.3-1.8 3m0 3h.01"/>
+          </svg>
+          <span class="flex-1 text-sm text-slate-700">Help Center</span>
+          <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Logout -->
+    <button id="logout-button"
+      class="mb-5 flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-red-600 active:scale-[0.99]">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14 5-5-5-5m5 5H9"/>
+      </svg>
+      Log Out
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-navigation"
+     class="mt-auto grid grid-cols-4 border-t border-slate-200 bg-[#f8faf7] pt-3">
+</nav>
+
+<script type="module">
+  import { renderBottomNavigation } from "../src/js/components/bottom-navigation.js";
+
+  renderBottomNavigation();
+</script>
+  </main>
+
+  <script>
+    // Load saved profile
+    const profile = JSON.parse(
+      localStorage.getItem("recycleconnect_profile") || "{}"
+    );
+
+    const savedUser = JSON.parse(
+      localStorage.getItem("recycleconnect_user") || "{}"
+    );
+
+    document.getElementById("profile-name").textContent =
+      profile.fullName || savedUser.name || "Your Name";
+
+    document.getElementById("profile-email").textContent =
+      savedUser.email || profile.email || "Add your email address";
+
+    // Restore saved settings
+    const travelToggle = document.getElementById("travel-toggle");
+    const notificationToggle = document.getElementById("notification-toggle");
+
+    travelToggle.checked =
+      localStorage.getItem("recycleconnect_travelling_mode") === "true";
+
+    notificationToggle.checked =
+      localStorage.getItem("recycleconnect_notifications") !== "false";
+
+    travelToggle.addEventListener("change", () => {
+      localStorage.setItem(
+        "recycleconnect_travelling_mode",
+        travelToggle.checked
+      );
+    });
+
+    notificationToggle.addEventListener("change", () => {
+      localStorage.setItem(
+        "recycleconnect_notifications",
+        notificationToggle.checked
+      );
+    });
+
+    // Account actions
+    // Edit Profile
+const editProfileForm = document.getElementById("edit-profile-form");
+const profileForm = document.getElementById("profile-form");
+
+document.getElementById("edit-profile").addEventListener("click", () => {
+  // Load the latest saved data
+  const profile = JSON.parse(
+    localStorage.getItem("recycleconnect_profile") || "{}"
+  );
+
+  const user = JSON.parse(
+    localStorage.getItem("recycleconnect_user") || "{}"
+  );
+
+  document.getElementById("edit-fullname").value =
+    profile.fullName || user.name || "";
+
+  document.getElementById("edit-email").value =
+    profile.email || user.email || "";
+
+  document.getElementById("edit-phone").value =
+    profile.phone || "";
+
+  document.getElementById("edit-street").value =
+    profile.street || "";
+
+  document.getElementById("edit-city").value =
+    profile.city || "";
+
+  document.getElementById("edit-state").value =
+    profile.state || "";
+
+  editProfileForm.classList.remove("hidden");
+
+  editProfileForm.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+// Close form
+document.getElementById("close-edit-profile").addEventListener("click", () => {
+  editProfileForm.classList.add("hidden");
+});
+
+// Save profile
+profileForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const profile = JSON.parse(
+    localStorage.getItem("recycleconnect_profile") || "{}"
+  );
+
+  const user = JSON.parse(
+    localStorage.getItem("recycleconnect_user") || "{}"
+  );
+
+  const updatedProfile = {
+    ...profile,
+    fullName: document.getElementById("edit-fullname").value.trim(),
+    email: document.getElementById("edit-email").value.trim(),
+    phone: document.getElementById("edit-phone").value.trim(),
+    street: document.getElementById("edit-street").value.trim(),
+    city: document.getElementById("edit-city").value.trim(),
+    state: document.getElementById("edit-state").value.trim()
+  };
+
+  localStorage.setItem(
+    "recycleconnect_profile",
+    JSON.stringify(updatedProfile)
+  );
+
+  // Update the local display account details too
+  localStorage.setItem(
+    "recycleconnect_user",
+    JSON.stringify({
+      ...user,
+      name: updatedProfile.fullName,
+      email: updatedProfile.email
+    })
+  );
+
+  document.getElementById("profile-name").textContent =
+    updatedProfile.fullName;
+
+  document.getElementById("profile-email").textContent =
+    updatedProfile.email;
+
+  editProfileForm.classList.add("hidden");
+
+  alert("Your profile has been updated successfully!");
+});
+
+    // Change Password
+const passwordFormSection = document.getElementById("change-password-form");
+const passwordForm = document.getElementById("password-form");
+
+document.getElementById("change-password").addEventListener("click", () => {
+  passwordFormSection.classList.remove("hidden");
+
+  passwordFormSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+// Close Change Password Form
+document.getElementById("close-password-form").addEventListener("click", () => {
+  passwordFormSection.classList.add("hidden");
+  passwordForm.reset();
+});
+
+// Validate Change Password Form
+passwordForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const currentPassword =
+    document.getElementById("current-password").value;
+
+  const newPassword =
+    document.getElementById("new-password").value;
+
+  const confirmPassword =
+    document.getElementById("confirm-password").value;
+
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    alert("Please complete all password fields.");
+    return;
+  }
+
+  if (newPassword.length < 8) {
+    alert("Your new password must contain at least 8 characters.");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    alert("Your new passwords do not match.");
+    return;
+  }
+
+  alert(
+    "Your details are valid. Secure password updates will be enabled when the authentication backend is connected."
+  );
+});
+    document.getElementById("privacy-policy").addEventListener("click", () => {
+      alert("The RecycleConnect Privacy Policy page will be available soon.");
+    });
+
+    document.getElementById("help-center").addEventListener("click", () => {
+      alert("The RecycleConnect Help Center will be available soon.");
+    });
+
+    // Logout
+    document.getElementById("logout-button").addEventListener("click", () => {
+      const confirmed = confirm("Are you sure you want to log out?");
+
+      if (!confirmed) return;
+
+      localStorage.removeItem("recycleconnect_user");
+      localStorage.removeItem("recycleconnect_role");
+
+      window.location.href = "./auth-choice.html";
+    });
+  </script>
+
+</body>
+</html>

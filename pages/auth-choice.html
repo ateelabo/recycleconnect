@@ -13,10 +13,7 @@
 
   <main class="flex min-h-screen flex-col px-6 py-8">
 
-    <header class="flex items-center gap-2">
-      <span class="text-2xl">♻️</span>
-      <h2 class="text-lg font-bold">Recycle Connect</h2>
-    </header>
+    
 
     <section class="flex flex-1 flex-col items-center justify-center text-center">
 
@@ -78,9 +75,24 @@ if (role) {
 }
 
 document.getElementById("google-signin").addEventListener("click", () => {
-  alert("Google Sign-In integration is coming soon!");
-});
-  </script>
+
+  // Create temporary mock session
+  const mockUser = {
+    id: "demo-user-001",
+    name: "RecycleConnect Demo User",
+    email: "demo@recycleconnect.com",
+    authenticated: true
+  };
+
+  localStorage.setItem(
+    "recycleconnect_session",
+    JSON.stringify(mockUser)
+  );
+
+  // Continue to account type selection
+  window.location.href = "./onboarding-role.html";
+
+});  </script>
 
 </body>
 </html>
