@@ -187,6 +187,7 @@
     if (initialRates) initialRates.replaceChildren();
     const initialRateBadge = initialRatesTitle?.parentElement?.querySelector("span");
     if (initialRateBadge) initialRateBadge.textContent = "LOADING";
+    if ($("rate-source-note")) $("rate-source-note").textContent = "Current material rates are loading from the Recycle Connect system.";
     const earliestPickup = new Date();
     earliestPickup.setDate(earliestPickup.getDate() + 1);
     const earliestLocal = new Date(earliestPickup.getTime() - earliestPickup.getTimezoneOffset() * 60000);
@@ -211,14 +212,36 @@
         if ($("wallet-balance")) $("wallet-balance").textContent = dashboard.wallet_balance_formatted || "₦" + Number(dashboard.wallet_balance || 0).toLocaleString("en-NG");
         if ($("wallet-points")) $("wallet-points").textContent = "Wallet credited after completed pickups";
         if ($("pickup-status")) $("pickup-status").textContent = statusText(dashboard.next_pickup?.status);
+        const assignedCollector = dashboard.next_pickup?.collector_name;
+        const collectorBadge = dashboard.next_pickup?.collector_badge_id;
+        if ($("assigned-collector-name")) $("assigned-collector-name").textContent = assignedCollector || "Awaiting assignment";
+        if ($("assigned-collector-id")) $("assigned-collector-id").textContent = "Collector ID: " + (collectorBadge || "Pending");
+        if ($("collector-verified-badge")) {
+          $("collector-verified-badge").hidden = !collectorBadge;
+          $("collector-verified-badge").textContent = collectorBadge ? "Verified" : "Not assigned";
+        }
+        if ($("collector-identity-status")) {
+          $("collector-identity-status").textContent = collectorBadge ? "● Identity verified" : "● Verification pending";
+          $("collector-identity-status").classList.toggle("text-green-700", Boolean(collectorBadge));
+          $("collector-identity-status").classList.toggle("text-amber-700", !collectorBadge);
+        }
+        if ($("collector-assignment-note")) $("collector-assignment-note").textContent = assignedCollector
+          ? "Assignment provided by live dispatch."
+          : "No collector has been assigned to this pickup yet.";
         if (dashboard.next_pickup) {
           const date = new Date(dashboard.next_pickup.scheduled_date);
           if ($("pickup-time")) $("pickup-time").textContent = date.toLocaleString("en-NG", { weekday: "long", hour: "numeric", minute: "2-digit" });
+          if ($("collector-pickup-day")) $("collector-pickup-day").textContent = date.toLocaleDateString("en-NG", { weekday: "long" });
+          if ($("collector-pickup-time")) $("collector-pickup-time").textContent = date.toLocaleTimeString("en-NG", { hour: "numeric", minute: "2-digit" });
           const skip = $("cancel-pickup");
           if (skip) {
             skip.textContent = "Skip This Pickup";
             skip.disabled = dashboard.next_pickup.status !== "SCHEDULED";
           }
+        } else {
+          if ($("pickup-time")) $("pickup-time").textContent = "No pickup scheduled";
+          if ($("collector-pickup-day")) $("collector-pickup-day").textContent = "—";
+          if ($("collector-pickup-time")) $("collector-pickup-time").textContent = "—";
         }
         const ratesTitle = Array.from(document.querySelectorAll("h2")).find((h) => h.textContent.trim() === "Material Rate Card");
         const rateGrid = ratesTitle?.closest("section")?.querySelector(".mt-5.grid");
@@ -235,7 +258,10 @@
             card.append(icon, label, amount); rateGrid.appendChild(card);
           });
           const rateBadge = ratesTitle.parentElement.querySelector("span");
-          if (rateBadge) rateBadge.textContent = "LIVE RATES";
+          if (rateBadge) rateBadge.textContent = dashboard.rates?.length ? "LIVE RATES" : "NO RATES";
+          if ($("rate-source-note")) $("rate-source-note").textContent = dashboard.rates?.length
+            ? "Live rates set by the Recycle Connect admin system."
+            : "No material rates are currently available.";
         }
         const history = $("history-list");
         if (history) {
@@ -277,6 +303,17 @@
         show($("pickup-notice"), error.message, true);
         if ($("wallet-balance")) $("wallet-balance").textContent = "Unavailable";
         if ($("history-list")) $("history-list").textContent = error.message;
+        if ($("rate-source-note")) $("rate-source-note").textContent = "Live rates are unavailable. Try refreshing when the service is online.";
+        if (initialRateBadge) initialRateBadge.textContent = "OFFLINE";
+        if ($("assigned-collector-name")) $("assigned-collector-name").textContent = "Assignment unavailable";
+        if ($("assigned-collector-id")) $("assigned-collector-id").textContent = "Collector ID: —";
+        if ($("collector-verified-badge")) $("collector-verified-badge").hidden = true;
+        if ($("collector-identity-status")) {
+          $("collector-identity-status").textContent = "● Assignment unavailable";
+          $("collector-identity-status").classList.remove("text-green-700");
+          $("collector-identity-status").classList.add("text-amber-700");
+        }
+        if ($("collector-assignment-note")) $("collector-assignment-note").textContent = "Collector assignment could not be loaded.";
       }
     };
     renderDashboard();
