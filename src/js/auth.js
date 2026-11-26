@@ -1,4 +1,9 @@
 (() => {
+  let initialized = false;
+  let promptActive = false;
+  let activeMessage = null;
+  let activeRole = "";
+
   function nextPage(session, isNewUser) {
     const role = session.role;
     if (role === "COLLECTOR") return { href: "./collector-dashboard.html" };
@@ -9,19 +14,24 @@
     return { href: "./household-dashboard.html" };
   }
 
-  window.startRecycleConnectGoogleSignIn = (messageElement, selectedRole) => {
+  function showError(message) {
+    if (!activeMessage) return;
+    activeMessage.textContent = message;
+    activeMessage.classList.add("text-red-600");
+  }
+
+  function initializeGoogle() {
+    if (initialized) return;
     const api = window.RecycleConnectAPI;
-    if (!api?.googleClientId) {
-      messageElement.textContent = "Google sign-in is not configured. Add the OAuth client ID in src/js/config/config.js.";
-      messageElement.classList.add("text-red-600");
-      return;
-    }
-    const initialize = () => window.google.accounts.id.initialize({
+    window.google.accounts.id.initialize({
       client_id: api.googleClientId,
       callback: async (credentialResponse) => {
+        promptActive = false;
+        const messageElement = activeMessage;
         try {
+          if (!credentialResponse?.credential) throw new Error("Google did not return a sign-in credential. Please try again.");
           messageElement.textContent = "Signing in…";
-          const result = await api.signInWithGoogle(credentialResponse.credential, selectedRole);
+          const result = await api.signInWithGoogle(credentialResponse.credential, activeRole);
           const destination = nextPage(result.session, result.is_new_user);
           if (destination.message) {
             messageElement.textContent = destination.message;
@@ -34,10 +44,38 @@
         }
       }
     });
-    const showPrompt = () => {
-      initialize();
-      window.google.accounts.id.prompt();
-    };
+    initialized = true;
+  }
+
+  function showPrompt() {
+    if (!window.google?.accounts?.id) {
+      promptActive = false;
+      showError("Google sign-in could not load. Check your connection and try again.");
+      return;
+    }
+    initializeGoogle();
+    if (promptActive) return;
+    promptActive = true;
+    try {
+      window.google.accounts.id.prompt((notification) => {
+        if (notification.isNotDisplayed() || notification.isSkippedMoment() || notification.isDismissedMoment()) {
+          promptActive = false;
+        }
+      });
+    } catch (error) {
+      promptActive = false;
+      showError(error.message || "Google sign-in could not start. Please try again.");
+    }
+  }
+
+  window.startRecycleConnectGoogleSignIn = (messageElement, selectedRole) => {
+    activeMessage = messageElement;
+    activeRole = selectedRole;
+    const api = window.RecycleConnectAPI;
+    if (!api?.googleClientId) {
+      showError("Google sign-in is not configured. Add the OAuth client ID in src/js/config/config.js.");
+      return;
+    }
     if (window.google?.accounts?.id) {
       showPrompt();
     } else {
@@ -52,8 +90,8 @@
       }
       script.addEventListener("load", showPrompt, { once: true });
       script.addEventListener("error", () => {
-        messageElement.textContent = "Google sign-in could not load. Check your connection and try again.";
-        messageElement.classList.add("text-red-600");
+        promptActive = false;
+        showError("Google sign-in could not load. Check your connection and try again.");
       }, { once: true });
     }
   };
