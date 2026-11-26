@@ -4,7 +4,7 @@ The frontend and Express backend remain in separate repositories. Their API agre
 
 ## Local setup
 
-Set `src/js/config/config.js` to the backend URL and (if using Google sign-in) the OAuth client ID. The app can also read `window.RECYCLECONNECT_API_URL` or the browser's `recycleconnect_api_url` local-storage value before falling back to `http://localhost:3000`:
+The frontend defaults to the deployed Render API at `https://recycleconnect-api-2gmy.onrender.com`. For local development, set `src/js/config/config.js` to `http://localhost:3000`, or override it with `window.RECYCLECONNECT_API_URL`. The browser's `recycleconnect_api_url` local-storage override is honored only on localhost and 127.0.0.1.
 
 ```js
 window.RECYCLECONNECT_CONFIG = {

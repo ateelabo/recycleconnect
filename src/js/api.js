@@ -1,7 +1,11 @@
 (() => {
   const config = window.RECYCLECONNECT_CONFIG || {};
+  const isLocalDevelopment = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const localApiUrl = isLocalDevelopment
+    ? localStorage.getItem("recycleconnect_api_url")
+    : "";
   const API_BASE = (config.apiBaseUrl || window.RECYCLECONNECT_API_URL ||
-    localStorage.getItem("recycleconnect_api_url") || "http://localhost:3000").replace(/\/$/, "");
+    localApiUrl || "https://recycleconnect-api-2gmy.onrender.com").replace(/\/$/, "");
   const GOOGLE_CLIENT_ID = config.googleClientId || window.RECYCLECONNECT_GOOGLE_CLIENT_ID || "";
 
   async function request(path, options = {}) {
