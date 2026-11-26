@@ -58,7 +58,7 @@
     promptActive = true;
     try {
       window.google.accounts.id.prompt((notification) => {
-        if (notification.isNotDisplayed() || notification.isSkippedMoment() || notification.isDismissedMoment()) {
+        if (notification.isSkippedMoment() || notification.isDismissedMoment()) {
           promptActive = false;
         }
       });
