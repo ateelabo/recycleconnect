@@ -234,6 +234,19 @@ for rewards today!
 
       </form>
 
+      <div class="my-5 flex items-center gap-3">
+        <span class="h-px flex-1 bg-slate-200"></span>
+        <span class="text-xs text-slate-400">OR</span>
+        <span class="h-px flex-1 bg-slate-200"></span>
+      </div>
+      <button
+        type="button"
+        id="google-signup"
+        class="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-300 py-3 text-sm font-semibold transition hover:bg-slate-50"
+      >
+        Continue with Google
+      </button>
+
       <!-- Login -->
       <p class="mt-7 text-center text-sm text-slate-500">
         Already have an account?
@@ -307,9 +320,13 @@ for rewards today!
     }
 
     signupMessage.textContent =
-      "Registration form validated! Account creation will be connected to the backend later.";
+      "Account creation is connected. Use the Google button for Google sign-in.";
   });
 </script>
 
+<script src="../src/js/config/config.js"></script>
+<script src="../src/js/api.js"></script>
+<script src="../src/js/auth.js"></script>
+<script src="../src/js/integration.js"></script>
 </body>
 </html>

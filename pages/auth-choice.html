@@ -75,24 +75,12 @@ if (role) {
 }
 
 document.getElementById("google-signin").addEventListener("click", () => {
-
-  // Create temporary mock session
-  const mockUser = {
-    id: "demo-user-001",
-    name: "RecycleConnect Demo User",
-    email: "demo@recycleconnect.com",
-    authenticated: true
-  };
-
-  localStorage.setItem(
-    "recycleconnect_session",
-    JSON.stringify(mockUser)
-  );
-
-  // Continue to account type selection
-  window.location.href = "./onboarding-role.html";
-
+  // The shared integration script completes Google authentication with the backend.
 });  </script>
 
+<script src="../src/js/config/config.js"></script>
+<script src="../src/js/api.js"></script>
+<script src="../src/js/auth.js"></script>
+<script src="../src/js/integration.js"></script>
 </body>
 </html>
