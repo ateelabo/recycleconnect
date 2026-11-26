@@ -8,10 +8,10 @@
 <body class="rc-page"><main class="rc-phone">
   <div class="rc-status"><span data-current-time>9:30</span><span class="rc-island" aria-hidden="true"></span><span class="rc-status-right">▮▮▮　◉　▰</span></div>
   <header class="rc-topbar"><a class="rc-icon-button" href="./collection-confirm.html" aria-label="Back">‹</a><h1>Collection Successful</h1><button class="rc-bell" data-notice="You’re all caught up." aria-label="Notifications">♧</button></header>
-  <section class="rc-success"><div class="rc-checkmark" aria-hidden="true">✓</div><h2>Pickup confirmed!</h2><p class="rc-subtitle">Thanks for recycling with Recycle Connect. Your reward has been added to your balance.</p></section>
-  <section class="rc-card" style="margin-top:20px"><h2>Collection summary</h2><div class="rc-info-row"><span>Total weight</span><strong>12.5 kg</strong></div><div class="rc-info-row"><span>Reward credited</span><strong style="color:var(--rc-green)">₦2,200</strong></div><div class="rc-info-row"><span>Points earned</span><strong style="color:var(--rc-green)">+625 points</strong></div><div class="rc-info-row"><span>Collector</span><strong>Musa · RC-001</strong></div></section>
+  <section class="rc-success"><div class="rc-checkmark" aria-hidden="true">✓</div><h2>Pickup confirmation</h2><p id="success-notice" class="rc-subtitle" role="status" aria-live="polite">Loading the latest confirmed pickup…</p></section>
+  <section id="success-details" class="rc-card" style="margin-top:20px" aria-live="polite"><h2>Collection summary</h2></section>
   <a class="rc-button block" href="./household-dashboard.html">Back to Home</a><a class="rc-button secondary block" href="./balance-history.html">View Transaction History</a>
   <p class="rc-small-note" style="margin:15px 4px;text-align:center">Thank you for helping make a difference.</p>
   <nav class="rc-nav" aria-label="Household navigation"><a class="active" href="./household-dashboard.html"><span class="rc-nav-icon">⌂</span>Home</a><a href="./balance-history.html"><span class="rc-nav-icon">◴</span>History</a><a href="./rewards.html"><span class="rc-nav-icon">♙</span>Reward</a><a href="./profile-settings.html"><span class="rc-nav-icon">♟</span>Profile</a></nav>
   <div class="rc-toast" data-toast hidden role="status" aria-live="polite"></div>
-</main><script src="../src/js/design-continuation.js"></script></body></html>
+</main><script src="../src/js/config/config.js"></script><script src="../src/js/api.js"></script><script src="../src/js/live-design-screens.js"></script><script src="../src/js/design-continuation.js"></script></body></html>

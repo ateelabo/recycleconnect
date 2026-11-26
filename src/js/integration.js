@@ -40,12 +40,13 @@
   };
 
   if (page === "role-selection.html") {
-    document.querySelectorAll("[data-role]").forEach((button) => {
-      if (button.dataset.role.toLowerCase() === "admin") {
-        button.dataset.role = "Estate";
-        button.textContent = "Estate Manager";
-      }
-    });
+    const adminButton = Array.from(document.querySelectorAll("[data-role]"))
+      .find((button) => button.dataset.role.toLowerCase() === "admin");
+    adminButton?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      location.href = "../admin/";
+    }, true);
   }
 
   if (page === "auth-choice.html") {

@@ -12,18 +12,14 @@
   <main class="rc-phone">
     <div class="rc-status"><span data-current-time>9:30</span><span class="rc-island" aria-hidden="true"></span><span class="rc-status-right">▮▮▮　◉　▰</span></div>
     <header class="rc-topbar"><a class="rc-icon-button" href="./household-dashboard.html" aria-label="Back to household dashboard">‹</a><h1>Collection &amp; Confirm</h1><button class="rc-bell" type="button" data-notice="You’re all caught up." aria-label="Notifications">♧</button></header>
-    <section class="rc-card rc-soft-card"><div class="rc-collector"><div class="rc-avatar">👨🏽‍💼</div><div><strong>Musa · RC-001</strong><p class="rc-subtitle">Verified collector · On-site weighing completed</p></div><span class="rc-pill">✓ Verified</span></div><p class="rc-subtitle" style="margin-top:12px">Review the materials and reward before confirming this pickup.</p></section>
-    <h2 class="rc-section-title">Weighed Materials</h2>
-    <div class="rc-material"><span class="rc-material-icon">♻️</span><div><div class="rc-material-name">PET Plastics</div><div class="rc-material-detail">5.0 kg × ₦180/kg</div></div><strong class="rc-amount">₦900</strong></div>
-    <div class="rc-material"><span class="rc-material-icon">🥫</span><div><div class="rc-material-name">Aluminium Cans</div><div class="rc-material-detail">2.0 kg × ₦420/kg</div></div><strong class="rc-amount">₦840</strong></div>
-    <div class="rc-material"><span class="rc-material-icon">📦</span><div><div class="rc-material-name">Cartons</div><div class="rc-material-detail">3.0 kg × ₦95/kg</div></div><strong class="rc-amount">₦285</strong></div>
-    <div class="rc-material"><span class="rc-material-icon">🥂</span><div><div class="rc-material-name">Glass</div><div class="rc-material-detail">2.5 kg × ₦70/kg</div></div><strong class="rc-amount">₦175</strong></div>
-    <div class="rc-total"><strong>Total weight</strong><strong>12.5 kg</strong><span class="rc-points">₦2,200 credited · +625 points</span></div>
-    <p class="rc-small-note" style="margin:10px 2px">Confirm if these weights and rewards look right. If something is wrong, report a dispute for review.</p>
-    <div class="rc-button-row"><a class="rc-button" href="./collection-success.html">👍 Confirm</a><a class="rc-button danger" href="./admin-dispute.html">👎 Dispute</a></div>
+    <section class="rc-card rc-soft-card"><h2>Review your pickup</h2><p class="rc-subtitle" style="margin-top:12px">The details below are loaded from your account. Confirm them or send a dispute for admin review.</p></section>
+    <p id="confirmation-notice" class="rc-small-note" role="status" aria-live="polite">Loading pickup confirmation…</p>
+    <section id="confirmation-details" class="rc-card" aria-live="polite"></section>
+    <section id="confirmation-actions" class="rc-button-row"><button id="confirm-pickup" class="rc-button" type="button">👍 Confirm pickup</button><button id="dispute-pickup" class="rc-button danger" type="button">👎 Report an issue</button></section>
+    <section id="dispute-form" class="rc-card" hidden><label for="dispute-reason">What needs review?</label><textarea id="dispute-reason" rows="3" class="rc-form-input" maxlength="1000"></textarea><button id="submit-dispute" class="rc-button danger block" type="button">Send dispute</button></section>
     <nav class="rc-nav" aria-label="Household navigation"><a class="active" href="./household-dashboard.html"><span class="rc-nav-icon">⌂</span>Home</a><a href="./balance-history.html"><span class="rc-nav-icon">◴</span>History</a><a href="./rewards.html"><span class="rc-nav-icon">♙</span>Reward</a><a href="./profile-settings.html"><span class="rc-nav-icon">♟</span>Profile</a></nav>
     <div class="rc-toast" data-toast hidden role="status" aria-live="polite"></div>
   </main>
-  <script src="../src/js/design-continuation.js"></script>
+  <script src="../src/js/config/config.js"></script><script src="../src/js/api.js"></script><script src="../src/js/live-design-screens.js"></script><script src="../src/js/design-continuation.js"></script>
 </body>
 </html>

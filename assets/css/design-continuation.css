@@ -96,6 +96,10 @@ button { font: inherit; }
 .rc-info-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #edf0ed; font-size: 13px; }
 .rc-info-row:last-child { border-bottom: 0; }
 .rc-info-row strong { text-align: right; }
+.rc-form-input { display: block; width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid var(--rc-line); border-radius: 10px; background: #fff; color: var(--rc-ink); font: inherit; }
+.rc-form-label { display: block; margin-top: 10px; font-size: 13px; font-weight: 700; }
+.rc-weight-fields { display: grid; gap: 8px; }
+.rc-check-label { display: flex; align-items: center; gap: 8px; margin: 16px 0; font-size: 14px; }
 .rc-home-title { margin: 6px 0 3px; font-size: 25px; }
 .rc-job-card { display: flex; gap: 12px; align-items: flex-start; }
 .rc-job-icon { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 12px; background: var(--rc-green-soft); font-size: 22px; }
