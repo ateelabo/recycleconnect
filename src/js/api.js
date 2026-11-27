@@ -89,8 +89,13 @@
       })
     },
     users: {
+      getProfile: () => request("/users/profile"),
       profile: (profile) => request("/users/profile", {
         method: "PATCH", body: JSON.stringify(profile)
+      }),
+      uploadProfileImage: (file) => request("/users/profile/avatar", {
+        method: "PUT", body: file,
+        headers: { "Content-Type": file.type }
       }),
       onboarding: (profile) => request("/users/onboarding", {
         method: "PATCH", body: JSON.stringify(profile)

@@ -17,6 +17,8 @@ Start the API in the backend repository with `npm install` and `npm start`. Serv
 
 The backend uses PostgreSQL via `pg`; Supabase Postgres can be used by setting the backend's private `DATABASE_URL`. The API's email/password flow is backend-managed, not Supabase Auth. Signup also requires applying `migrations/20261125_password_auth.sql` to a database where the `users` table already exists.
 
+Profile settings uploads JPEG, PNG, and WebP images up to 2 MB through the backend to a private Supabase Storage bucket. The backend needs `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in its private environment; the key must never be added to this frontend repository. Apply `migrations/20261126_profile_avatar.sql` before enabling the upload in production; it creates the private `profile-avatars` bucket and adds the user's avatar-path column. The API returns one-hour signed image URLs.
+
 ## Connected screens
 
 - Email/password signup and login; Google sign-in remains available when configured.
@@ -32,5 +34,5 @@ The backend uses PostgreSQL via `pg`; Supabase Postgres can be used by setting t
 - Set `GOOGLE_CLIENT_ID` in the backend and `googleClientId` here if Google sign-in is needed. Email/password does not need it.
 - Confirm the full schema and material-rate seed exist in Supabase. Only the `users` columns have been confirmed; the rest cannot be checked until database access is configured.
 - OTP is a development-only fixed value (`123456`), not real phone verification.
-- KYC and scale evidence use URLs; the backend has no file-upload/storage endpoint.
+- KYC and scale evidence still use URL references; the profile-avatar upload endpoint does not upload those files.
 - Password reset is not implemented by the backend.

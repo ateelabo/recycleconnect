@@ -352,6 +352,64 @@
   }
 
   if (page === "profile-settings.html") {
+    const avatar = $("profile-avatar");
+    const avatarPlaceholder = $("profile-avatar-placeholder");
+    const avatarInput = $("profile-avatar-file");
+    const avatarButton = $("change-profile-avatar");
+    const avatarMessage = $("profile-avatar-message");
+    const allowedAvatarTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+    const maxAvatarBytes = 2 * 1024 * 1024;
+    const showAvatar = (url) => {
+      if (!avatar || !avatarPlaceholder) return;
+      if (!url) {
+        avatar.removeAttribute("src");
+        avatar.classList.add("hidden");
+        avatarPlaceholder.classList.remove("hidden");
+        return;
+      }
+      avatar.onload = () => {
+        avatar.classList.remove("hidden");
+        avatarPlaceholder.classList.add("hidden");
+      };
+      avatar.onerror = () => showAvatar(null);
+      avatar.src = url;
+    };
+
+    api.users.getProfile().then((result) => {
+      showAvatar(result.profile_image_url);
+    }).catch((error) => {
+      if (avatarMessage) show(avatarMessage, error.message, true);
+    });
+
+    avatarButton?.addEventListener("click", () => avatarInput?.click());
+    avatarInput?.addEventListener("change", async () => {
+      const file = avatarInput.files?.[0];
+      if (!file) return;
+      if (!allowedAvatarTypes.has(file.type)) {
+        show(avatarMessage, "Choose a JPEG, PNG, or WebP image.", true);
+        avatarInput.value = "";
+        return;
+      }
+      if (file.size > maxAvatarBytes) {
+        show(avatarMessage, "Choose an image that is 2 MB or smaller.", true);
+        avatarInput.value = "";
+        return;
+      }
+
+      avatarButton.disabled = true;
+      show(avatarMessage, "Uploading profile photo…");
+      try {
+        const result = await api.users.uploadProfileImage(file);
+        showAvatar(result.profile_image_url);
+        show(avatarMessage, "Profile photo updated.");
+      } catch (error) {
+        show(avatarMessage, error.message, true);
+      } finally {
+        avatarButton.disabled = false;
+        avatarInput.value = "";
+      }
+    });
+
     if ($("edit-email")) {
       $("edit-email").readOnly = true;
       $("edit-email").title = "Email changes are not supported by the account API.";
